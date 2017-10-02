@@ -1,0 +1,105 @@
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.choices {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 60vw;
+}
+
+.color {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+}
+
+.color1 {
+  background-color: red;
+}
+
+.color2 {
+  background-color: orange;
+}
+
+.color3 {
+  background-color: yellow;
+}
+
+.color4 {
+  background-color: green;
+}
+
+.color5 {
+  background-color: blue;
+}
+
+.save-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.palette-save {
+  /*align-items: center;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px;
+}
+
+.gen-btn {
+  background-color: pink;
+  border: 1px solid black;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.btn {
+  height: 25px;
+  width: 25px;
+}
+
+.save-btn, .delete-btn {
+  background-image: url('../assets/save-blue.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition-duration: .3s;
+}
+
+.save-btn:hover {
+  background-image: url('../assets/save-orange.svg');
+  transition-duration: .3s;
+}
+
+.delete-btn {
+  background-image: url('../assets/delete-blue.svg');
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  background-image: url('../assets/delete-orange.svg');
+  transition-duration: .3s;
+}
+
+select {
+  margin: 20px 0 0;
+}
+
+input {
+  margin-right: 10px;
+}
+
+.saved-project {
+  text-align: center;
+}
+
+.saved-color {
+  height: 25px;
+  width: 25px;
+}
