@@ -13,9 +13,24 @@
 }
 
 .color {
+  align-items: center;
   border: 1px solid black;
-  height: 100px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+  text-shadow: 1px 1px 1px black;
   width: 100px;
+}
+
+.lock {
+  background-image: url('../assets/unlock.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 25px;
+  width: 25px;
 }
 
 .color1 {
@@ -39,17 +54,17 @@
 }
 
 .save-area {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.palette-save {
-  /*align-items: center;*/
+.user-save {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 20px;
+  margin-top: 20px;
 }
 
 .gen-btn {
@@ -59,9 +74,10 @@
   text-align: center;
 }
 
-.btn {
-  height: 25px;
-  width: 25px;
+.gen-btn:hover {
+  background-color: yellow;
+  cursor: pointer;
+
 }
 
 .save-btn, .delete-btn {
@@ -69,7 +85,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  height: 25px;
+  margin-top: 15px;
   transition-duration: .3s;
+  width: 25px;
 }
 
 .save-btn:hover {
