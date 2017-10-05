@@ -1,56 +1,57 @@
-let color1 = $('.color1');
-let color2 = $('.color2');
-let color3 = $('.color3');
-let color4 = $('.color4');
-let color5 = $('.color5');
-let fiveColors = [color1, color2, color3, color4, color5];
-let lockedColors = [];
 
-generateColors()
+const genRandomColors = () => {
+  const characters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += characters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 
-function generateColors () {
+const displayColors = () => {
   headerColor()
   titleColor()
-  const colorChangers = [...fiveColors]
-  colorChangers.map( elem => {
-    const randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
-    elem.innerHTML = randomColor;
-    elem.last().text(randomColor.toUpperCase());
-    elem.css('background-color', randomColor);
-  });
+  for (let i = 1; i < 6; i++) {
+    if (!$(`.color${i}`).hasClass('locked')) {
+      let color = genRandomColors();
+      $(`.color${i}`).css('background-color', color);
+      $(`.hex${i}`).text(color);
+    }
+  }
 };
 
-function headerColor () {
+const headerColor = () => {
   const header = $('header');
-  const randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
-  header.css('background-color', randomColor);
+  let newColor = genRandomColors();
+  header.css('background-color', newColor);
 };
 
-function titleColor () {
+const titleColor = () => {
   const title = $('h1');
-  const randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
-  title.css('color', randomColor);
+  let newColor = genRandomColors();
+  title.css('color', newColor);
 };
 
-function addSelectOption (projectName) {
-  $('#projects').append(`<option class=${projectName} value='${projectName}'>${projectName}</option>`);
+const addSelectOption = (projectName) => {
+  let newOption = `<option class=${projectName} value='${projectName}'>${projectName}</option>`
+  $('#projects').append(newOption);
 };
 
-function addProjectAndPalette (projectName, paletteName, savedPalette) {
-  $('#saved-projects').append(
-    `<div class='saved-project ${projectName}'>
-      <h2>${projectName}</h2>
-      <h3>${paletteName}</h3>
-      <section class='${projectName}'>
-        <div class='choices'>
-          ${savedPalette}
-          <div class='btn delete-btn'></div>
-        </div>
-      </section>
-    </div>`)
+const addProjectAndPalette = (projectName, paletteName, savedPalette) => {
+  let newPalette =`<div class='saved-project ${projectName}'>
+    <h2>${projectName}</h2>
+    <h3>${paletteName}</h3>
+    <section class='${projectName}'>
+      <div class='choices'>
+        ${savedPalette}
+        <div class='btn delete-btn'></div>
+      </div>
+    </section>
+  </div>`
+  $('#saved-projects').append(newPalette)
 };
 
-function addPalette (projectName, paletteName, savedPalette) {
+const addPalette = (projectName, paletteName, savedPalette) => {
   $(`.${projectName}`).last().append(
     `<h3>${paletteName}</h3>
     <section class='${projectName}'>
@@ -61,13 +62,30 @@ function addPalette (projectName, paletteName, savedPalette) {
   )
 };
 
-
-function saveProject () {
-  var projectName = $('#project-name').val() || $('#projects').val() || 'JohnSnow';
-  var paletteName = $('#palette-name').val() || 'Go Broncos!';
-  var savedPalette = fiveColors.map(function(elem) {
-    return `<div class='saved-color' style='background-color:${elem.innerHTML}'></div>`;
+const saveProject = () => {
+  const projectName = $('#project-name').val() || $('#projects').val() || 'JohnSnow';
+  const paletteName = $('#palette-name').val() || 'Go Broncos!';
+  const fiveColors = [$('.color1'), $('.color2'), $('.color3'), $('.color4'), $('.color5')];
+  const savedPalette = fiveColors.map(elem => {
+    let hexcode = elem.text();
+    return `<div class='saved-color' style='background-color:${hexcode}'></div>`;
   });
+
+  const hexCodes = () => {
+    fiveColors.map(elem => {
+      return elem.text
+    })
+  }
+
+  fetch('/api/v1/projects', {
+    method: 'POST',
+    body: JSON.stringify({ name : `${projectName}` }),
+    headers: {
+      'Content-Type' : 'application/json'
+    }
+  })
+  .then(project => console.log('hi yall', project))
+
   if(!$(`option.${projectName}`).html()) {
     addSelectOption(`${projectName}`);
   }
@@ -83,33 +101,15 @@ function saveProject () {
     $('#palette-name').val('');
 };
 
-function lockColor (event) {
-  const colorChangers = [...fiveColors]
-
-  const colorId = event.target.id;
-  const lockedColor = $(`#${colorId}`);
-  const paletteId = lockedColor.parent()[0].id;
-  const lockedPalette = lockedColor.parent();
-  const palette = fiveColors.find(elem => elem[0].id === paletteId);
-  const index = colorId - 1;
-
-  lockedColor.toggleClass('lock');
-
-  if (fiveColors.includes(palette)) {
-    lockedColors.push(palette)
-    return fiveColors.splice(index, 1)
-  }
-  else {
-    const unLockedColor = lockedColors.find(elem => elem[0].id === paletteId);
-    lockedColors.splice(index, 1)
-
-    return fiveColors.splice(index, 0, unLockedColor)
-  }
-
-};
+const lockColor = (e) => {
+  console.log(e.target);
+  $(e.target).toggleClass('lock');
+  $(e.target).parents('.color').toggleClass('locked')
+}
 
 
 
-$('.gen-btn').on('click', generateColors);
+$(document).ready(displayColors);
+$('.gen-btn').on('click', displayColors);
 $('.save-btn').on('click', saveProject);
 $('.no-lock').on('click', lockColor);
