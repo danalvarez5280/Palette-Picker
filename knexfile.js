@@ -1,10 +1,8 @@
-// Update with your config settings.
-
 module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'post://localhost/palette_picker',
+    connection: 'postgres://localhost/palette_picker',
     migrations: {
       directory: './db/migrations'
     },

@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
 
     knex.schema.createTable('palettes', function(table) {
       table.increments('id').primary();
-      table.string('colors');
+      table.string('name');
       table.string('hex1');
       table.string('hex2');
       table.string('hex3');
@@ -24,7 +24,7 @@ exports.up = function(knex, Promise) {
 
 exports.down = (knex, Promise) => {
   return Promise.all[
-    knex.schema.dropTable('paletts'),
+    knex.schema.dropTable('palettes'),
     knex.schema.dropTable('projects')
   ]
 };
