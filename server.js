@@ -42,7 +42,7 @@ app.get('/api/v1/palettes', (request, response) => {
   .then(palettes => {
     response.status(200).json(palettes);
   })
-  .catch(err => response.status(500).json({ error }));
+  .catch(error => response.status(500).json({ error }));
 })
 
 
