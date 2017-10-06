@@ -124,6 +124,7 @@ h1 {
 
 .delete-btn:hover {
   background-image: url('../assets/delete-orange.svg');
+  cursor: pointer;
   transition-duration: .3s;
 }
 
@@ -146,4 +147,8 @@ input {
 .saved-color {
   height: 25px;
   width: 25px;
+}
+
+#projects {
+  width: 200px;
 }
