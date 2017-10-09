@@ -198,7 +198,7 @@ const saveProject = () => {
 
   $('#project-name').val('');
   $('#palette-name').val('');
-};
+}
 
 //event listeners
 $(document).ready(pageLoad);
