@@ -1,12 +1,14 @@
 const chai = require('chai');
 const should = chai.should();
 const chaiHttp = require('chai-http');
-const server = require('../../server');
-const environment = process.env.NODE_ENV || 'test';
-const configuration = require('../../knexfile')[environment];
+const server = require('../server');
+
+const environment = 'test';
+const configuration = require('../knexfile')[environment];
 const database = require('knex')(configuration);
 
 chai.use(chaiHttp);
+
 
 describe('Client Routes', () => {
   //happy path
@@ -34,12 +36,6 @@ describe('Client Routes', () => {
 
 describe('API Routes', () => {
 
-  before(done => {
-    database.migrate.latest()
-    .then(() => done())
-    .catch(error => console.log(error))
-  });
-
   beforeEach(done => {
     database.seed.run()
     .then(() => done())
@@ -54,11 +50,9 @@ describe('API Routes', () => {
         response.should.have.status(200);
         response.should.be.json;
         response.body.should.be.a('array');
-        response.body.length.should.equal(3);
+        response.body.length.should.equal(1);
         response.body[0].should.have.property('name');
         response.body[0].name.should.equal('JohnSnow');
-        response.body[0].should.have.property('id');
-        response.body[0].id.should.equal(1);
         done();
       });
     });
@@ -70,13 +64,11 @@ describe('API Routes', () => {
         response.should.have.status(200);
         response.should.be.json;
         response.body.should.be.a('array');
-        response.body.length.should.equal(5);
+        response.body.length.should.equal(1);
         response.body[0].should.have.property('name');
-        response.body[0].name.should.equal('hello');
+        response.body[0].name.should.equal('lighters');
         response.body[0].should.have.property('hex1');
-        response.body[0].hex1.should.equal('#C99307');
-        response.body[0].should.have.property('id');
-        response.body[0].id.should.equal(16);
+        response.body[0].hex1.should.equal('#C0390F');
         done();
       });
     });
@@ -87,13 +79,13 @@ describe('API Routes', () => {
       chai.request(server)
       .post('/api/v1/projects')
       .send({
-        name: 'LordSnow',
+        name: 'Tyrion',
       })
       .end((error, response) => {
         response.should.have.status(201);
-        response.body.should.be.a('object');
-        response.body.should.have.property('name');
-        response.body.name.should.equal('LordSnow');
+        response.body.should.be.a('Array');
+        response.body[0].should.have.property('name');
+        response.body[0].name.should.equal('Tyrion');
         chai.request(server)
         .get('/api/v1/projects')
         .end((error, response) => {
@@ -127,7 +119,7 @@ describe('API Routes', () => {
         hex3: '#HHHHHH',
         hex4: '#AAAAAA',
         hex5: '#CCCCCC',
-        project_id: 3
+        project_id: 29
       })
       .end((error, response) => {
         response.should.have.status(201);
@@ -162,7 +154,7 @@ describe('API Routes', () => {
   describe('DELETE /api/v1/palettes/:id', () => {
    it('should delete a palette', (done) => {
      chai.request(server)
-     .delete('/api/v1/palettes/17')
+     .delete('/api/v1/palettes/30')
      .end((error, response) => {
        response.should.have.status(204);
        done();
