@@ -66,6 +66,7 @@ app.get('/api/v1/projects/:name', (request, response) => {
 //saves a project to the database
 app.post('/api/v1/projects', (request, response) => {
   const name = request.body;
+  // console.log('WTHAT THE WHT:', name);
 
   if (!name) {
     return response.status(422).send({ error: `Expected format: { name: <String> }. You're missing the name property.` });
@@ -112,6 +113,7 @@ app.post('/api/v1/palettes', (request, response) => {
 //delete methods
 app.delete('/api/v1/palettes/:id', (request, response) => {
   const { id } = request.params;
+  console.log('id: ', id);
 
   database('palettes').where({ id }).del()
   .then(palette => {
@@ -131,3 +133,5 @@ app.delete('/api/v1/palettes/:id', (request, response) => {
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
+
+module.exports = app;

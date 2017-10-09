@@ -139,6 +139,7 @@ const pageLoad = () => {
 
 //saves a palette to the datbase
 const postPalette = (paletteName, hexCodes, projectIdentifier) => {
+  console.log('hexcodes', hexCodes);
   fetch('/api/v1/palettes', {
     method: 'POST',
     body: JSON.stringify({
