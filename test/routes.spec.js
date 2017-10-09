@@ -73,7 +73,7 @@ describe('API Routes', () => {
         response.body[0].should.have.property('name');
         response.body[0].name.should.equal('lighters');
         response.body[0].should.have.property('hex1');
-        response.body[0].hex1.should.equal('#EBA148');
+        response.body[0].hex1.should.equal('#C0390F');
         done();
       });
     });
