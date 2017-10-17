@@ -11,7 +11,14 @@ const configuration = require('./knexfile')[environment];
 //the database
 const database = require('knex')(configuration);
 
+const requireHTTPS = (request, response, next) => {
+  if(request.headers['x-forwarded-proto'] != 'https') {
+    return response.redirect('https://' + request.get('host') + request.url)
+  }
+    next();
+};
 //automatically pasres information for the database
+app.use(requireHTTPS);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //allows the server to
@@ -43,7 +50,7 @@ app.get('/api/v1/palettes', (request, response) => {
     response.status(200).json(palettes);
   })
   .catch(error => response.status(500).json({ error }));
-})
+});
 
 
 //retrieves the project id to find corresponding palettes
