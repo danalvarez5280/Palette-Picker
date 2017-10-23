@@ -149,6 +149,15 @@ input {
   width: 25px;
 }
 
+#saved-projects {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-palette {
+  overflow-y: scroll;
+}
+
 #projects {
   width: 200px;
 }
