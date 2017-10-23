@@ -14,9 +14,15 @@ h1 {
   text-shadow: 1px 1px 1px black;
 }
 
-h2, h3 {
+h2 {
   color: #FFFFFF;
   text-align: left;
+  text-shadow: 1px 1px 1px black;
+}
+
+h3 {
+  color: #FFFFFF;
+  text-align: right;
   text-shadow: 1px 1px 1px black;
   width: 120px;
 }
