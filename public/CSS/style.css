@@ -150,13 +150,13 @@ input {
 }
 
 #saved-projects {
+  background-color: grey;
   display: flex;
   flex-direction: column;
 }
 
 .user-palette {
   align-items: baseline;
-  background-color: grey;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
