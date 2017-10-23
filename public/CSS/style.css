@@ -155,6 +155,8 @@ input {
 }
 
 .user-palette {
+  display: flex;
+  flex-direction: row;
   overflow-y: scroll;
 }
 
