@@ -36,6 +36,7 @@ h3 {
 }
 
 .choices {
+  align-items: center;
   display: flex;
   flex: 2;
   flex-direction: row;
