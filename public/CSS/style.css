@@ -14,6 +14,10 @@ h1 {
   text-shadow: 1px 1px 1px black;
 }
 
+h3 {
+  width: 120px;
+}
+
 .main {
   align-items: center;
   display: flex;
