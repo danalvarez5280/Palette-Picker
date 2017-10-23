@@ -212,7 +212,7 @@ const showSavedPalette = (e) => {
 //event listeners
 $(document).ready(pageLoad);
 $('#saved-projects').on('click', '.delete-btn', fetchDelete);
-$('saved-projects').on('click', '.user-palette', showSavedPalette)
+$('#saved-projects').on('click', '.user-palette', showSavedPalette)
 $('.gen-btn').on('click', displayColors);
 $('.save-btn').on('click', saveProject);
 $('.no-lock').on('click', lockColor);
