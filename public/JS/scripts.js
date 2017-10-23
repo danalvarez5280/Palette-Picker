@@ -200,9 +200,19 @@ const saveProject = () => {
   $('#palette-name').val('');
 }
 
+const showSavedPalette = (e) => {
+  console.log(e.target);
+  // const colorArray = JSON.parse($(e.target).closest('.palette-details').attr('data-colors'));
+
+  // colorArray.forEach((color, i) => {
+  //   $(`.color${i + 1}`).css('background-color', color);
+  // });
+};
+
 //event listeners
 $(document).ready(pageLoad);
 $('#saved-projects').on('click', '.delete-btn', fetchDelete);
+$('saved-projects').on('click', '.user-palette', showSavedPalette)
 $('.gen-btn').on('click', displayColors);
 $('.save-btn').on('click', saveProject);
 $('.no-lock').on('click', lockColor);
