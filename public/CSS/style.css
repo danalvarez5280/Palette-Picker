@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: #B66109;
   font-family: 'Kalam', cursive;
   margin: 0;
 }
@@ -191,6 +191,7 @@ input {
 
 
 #project-name, #palette-name, #projects {
+  font-family: 'Kalam', cursive;
   font-size: 1em;
   height: 25px;
   padding: 5px;
