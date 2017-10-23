@@ -15,6 +15,7 @@ h1 {
 }
 
 h3 {
+  color: #FFFFFF;
   width: 120px;
 }
 
@@ -155,7 +156,7 @@ input {
 }
 
 #saved-projects {
-  background-color: #000000;
+  background-color: #58504F;
   display: flex;
   flex-direction: column;
   padding: 20px;
