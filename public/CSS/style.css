@@ -192,9 +192,9 @@ input {
   width: 200px;
 }
 
-#project-name {
+#project-name, #palette-name {
   font-size: 1em;
   height: 25px;
   padding: 5px;
-  width: 150px;
+  width: 250px;
 }
