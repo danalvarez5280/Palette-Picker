@@ -48,6 +48,16 @@ h3 {
   width: 60vw;
 }
 
+.main-choices {
+  align-items: center;
+  display: flex;
+  flex: 2;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 25px;
+  width: 60vw;
+}
+
 .color {
   align-items: center;
   border: 1px solid black;
