@@ -201,7 +201,7 @@ const saveProject = () => {
 }
 
 const showSavedPalette = (e) => {
-  console.log($(e.currentTarget).closest('.choices'));
+  console.log($(e.currentTarget).closest('.choices').innerHTML);
   // const colorArray = JSON.parse($(e.target).closest('.palette-details').attr('data-colors'));
 
   // colorArray.forEach((color, i) => {
