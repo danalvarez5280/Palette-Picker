@@ -188,13 +188,14 @@ input {
   flex-direction: row;
 }
 
-/*#projects {
-  width: 250px;
-}*/
 
 #project-name, #palette-name, #projects {
   font-size: 1em;
   height: 25px;
   padding: 5px;
   width: 250px;
+}
+
+#projects {
+  width: 300px;
 }
