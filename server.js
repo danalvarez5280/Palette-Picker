@@ -54,8 +54,8 @@ app.get('/api/v1/palettes', (request, response) => {
 
 
 //retrieves the project id to find corresponding palettes
-app.get('/api/v1/projects/:name', (request, response) => {
-  database('projects').where('name', request.params.name).select()
+app.get('/api/v1/projects/:id', (request, response) => {
+  database('projects').where('id', request.params.id).select()
   .then(project => {
     if(project.length) {
       response.status(200).json(project[0])
