@@ -24,7 +24,7 @@ h2 {
 }
 
 h3 {
-  color: #FFFFFF;
+  color: #FFE12E;
   text-align: right;
   text-shadow: 1px 1px 1px black;
   width: 150px;
@@ -190,4 +190,8 @@ input {
 
 #projects {
   width: 200px;
+}
+
+#project-name {
+  height: 1em;
 }
