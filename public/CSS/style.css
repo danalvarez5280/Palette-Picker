@@ -27,6 +27,7 @@ h3 {
 
 .choices {
   display: flex;
+  flex: 2;
   flex-direction: row;
   justify-content: center;
   width: 60vw;
@@ -155,6 +156,7 @@ input {
 
 #saved-projects {
   background-color: grey;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -167,11 +169,6 @@ input {
   flex-wrap: nowrap;
   justify-content: flex-start;
   overflow-y: scroll;
-}
-
-.choices {
-  flex: 2;
-  justify-content: center;
 }
 
 #saved-project {
