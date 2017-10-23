@@ -159,7 +159,7 @@ input {
   align-items: baseline;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
   overflow-y: scroll;
 }
 
