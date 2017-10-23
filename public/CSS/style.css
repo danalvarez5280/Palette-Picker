@@ -159,8 +159,14 @@ input {
   align-items: baseline;
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: flex-start;
   overflow-y: scroll;
+}
+
+.choices {
+  flex: 2;
+  justify-content: center;
 }
 
 #saved-project {
