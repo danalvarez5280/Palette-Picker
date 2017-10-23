@@ -39,7 +39,7 @@ h3 {
 }
 
 .choices {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex: 2;
   flex-direction: row;
@@ -95,6 +95,7 @@ h3 {
   border: 1px solid black;
   border-radius: 5px;
   color: white;
+  font-family: 'Kalam', cursive;
   height: 40px;
   margin-top: 25px;
   text-align: center;
