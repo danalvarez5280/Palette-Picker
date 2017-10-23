@@ -193,5 +193,7 @@ input {
 }
 
 #project-name {
-  height: 3em;
+  height: 25px;
+  padding: 5px;
+  width: 100px;
 }
