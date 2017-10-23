@@ -14,8 +14,10 @@ h1 {
   text-shadow: 1px 1px 1px black;
 }
 
-h3 {
+h2, h3 {
   color: #FFFFFF;
+  text-align: left;
+  text-shadow: 1px 1px 1px black;
   width: 120px;
 }
 
@@ -156,7 +158,7 @@ input {
 }
 
 #saved-projects {
-  background-color: #58504F;
+  background-color: #7794AF;
   display: flex;
   flex-direction: column;
   padding: 20px;
