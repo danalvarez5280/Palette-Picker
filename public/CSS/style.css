@@ -155,11 +155,11 @@ input {
 }
 
 .user-palette {
-  align-items: center;
+  align-items: baseline;
   background-color: grey;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   overflow-y: scroll;
 }
 
