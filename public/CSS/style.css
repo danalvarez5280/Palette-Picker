@@ -188,11 +188,11 @@ input {
   flex-direction: row;
 }
 
-#projects {
-  width: 200px;
-}
+/*#projects {
+  width: 250px;
+}*/
 
-#project-name, #palette-name {
+#project-name, #palette-name, #projects {
   font-size: 1em;
   height: 25px;
   padding: 5px;
