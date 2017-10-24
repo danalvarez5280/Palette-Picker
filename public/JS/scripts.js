@@ -185,12 +185,7 @@ const saveProject = () => {
 }
 
 const showSavedPalette = (e) => {
-  console.log($(e.currentTarget).closest('.choices'));
-  // const colorArray = JSON.parse($(e.target).closest('.palette-details').attr('data-colors'));
-
-  // colorArray.forEach((color, i) => {
-  //   $(`.color${i + 1}`).css('background-color', color);
-  // });
+  console.log($(e.target).closest('.saved-color'));
 };
 
 //event listeners
