@@ -42,8 +42,7 @@ const appendSelectOption = (project) => {
 
 //displays the random color palette on the DOM
 const displayColors = () => {
-  headerColor()
-  h1Color()
+
   for (let i = 1; i < 6; i++) {
     if (!$(`.color${i}`).hasClass('locked')) {
       let color = genRandomColors();
@@ -107,20 +106,6 @@ const genRandomColors = () => {
   return color;
 };
 
-//function that randomly changes the color of the header
-const headerColor = () => {
-  const header = $('header');
-  let newColor = genRandomColors();
-  header.css('background-color', newColor);
-};
-
-//function that randomly changes the h1 color
-const h1Color = () => {
-  const title = $('h1');
-  let newColor = genRandomColors();
-  title.css('color', newColor);
-};
-
 //locks an individual color
 const lockColor = (e) => {
   $(e.target).toggleClass('lock');
@@ -156,7 +141,6 @@ const postPalette = (paletteName, hexCodes, projectIdentifier) => {
     }
   })
   .then(data => data.json())
-  // .then(thing => console.log('thing', thing))
   .then(palette => appendPalette(palette[0]))
   .catch(error => console.log('why you soooo dumb', error))
 };
@@ -200,9 +184,14 @@ const saveProject = () => {
   $('#palette-name').val('');
 }
 
+const showSavedPalette = (e) => {
+  console.log($(e.target).closest('.saved-color'));
+};
+
 //event listeners
 $(document).ready(pageLoad);
 $('#saved-projects').on('click', '.delete-btn', fetchDelete);
+$('#saved-projects').on('click', '.user-palette', showSavedPalette)
 $('.gen-btn').on('click', displayColors);
 $('.save-btn').on('click', saveProject);
 $('.no-lock').on('click', lockColor);

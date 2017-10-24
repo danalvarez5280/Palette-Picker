@@ -24,8 +24,8 @@ exports.up = function(knex, Promise) {
 
 //runs when knex migrate:rollback is run in the terminal
 exports.down = (knex, Promise) => {
-  return Promise.all[
+  return Promise.all([
     knex.schema.dropTable('palettes'),
     knex.schema.dropTable('projects')
-  ]
+  ])
 };

@@ -11,7 +11,14 @@ const configuration = require('./knexfile')[environment];
 //the database
 const database = require('knex')(configuration);
 
+const requireHTTPS = (request, response, next) => {
+  if(request.headers['x-forwarded-proto'] != 'https') {
+    return response.redirect('https://' + request.get('host') + request.url)
+  }
+    next();
+};
 //automatically pasres information for the database
+// app.use(requireHTTPS);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //allows the server to
@@ -43,12 +50,12 @@ app.get('/api/v1/palettes', (request, response) => {
     response.status(200).json(palettes);
   })
   .catch(error => response.status(500).json({ error }));
-})
+});
 
 
 //retrieves the project id to find corresponding palettes
-app.get('/api/v1/projects/:name', (request, response) => {
-  database('projects').where('name', request.params.name).select()
+app.get('/api/v1/projects/:id', (request, response) => {
+  database('projects').where('id', request.params.id).select()
   .then(project => {
     if(project.length) {
       response.status(200).json(project[0])
@@ -56,6 +63,20 @@ app.get('/api/v1/projects/:name', (request, response) => {
     else{
       response.status(404).json({
           error: `Could not find a project with the ID of ${request.params.id}`
+        });
+    }
+  })
+});
+
+app.get('/api/v1/palettes/:id', (request, response) => {
+  database('palettes').where('id', request.params.id).select()
+  .then(palette => {
+    if(palette.length) {
+      response.status(200).json(palette[0])
+    }
+    else{
+      response.status(404).json({
+          error: `Could not find a palette with the ID of ${request.params.id}`
         });
     }
   })
@@ -113,7 +134,6 @@ app.post('/api/v1/palettes', (request, response) => {
 //delete methods
 app.delete('/api/v1/palettes/:id', (request, response) => {
   const { id } = request.params;
-  console.log('id: ', id);
 
   database('palettes').where({ id }).del()
   .then(palette => {
