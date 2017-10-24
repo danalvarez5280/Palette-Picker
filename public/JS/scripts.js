@@ -42,8 +42,7 @@ const appendSelectOption = (project) => {
 
 //displays the random color palette on the DOM
 const displayColors = () => {
-  headerColor()
-  h1Color()
+
   for (let i = 1; i < 6; i++) {
     if (!$(`.color${i}`).hasClass('locked')) {
       let color = genRandomColors();
@@ -156,7 +155,6 @@ const postPalette = (paletteName, hexCodes, projectIdentifier) => {
     }
   })
   .then(data => data.json())
-  // .then(thing => console.log('thing', thing))
   .then(palette => appendPalette(palette[0]))
   .catch(error => console.log('why you soooo dumb', error))
 };
@@ -201,7 +199,7 @@ const saveProject = () => {
 }
 
 const showSavedPalette = (e) => {
-  console.log('dan', JSON.parse($(e.currentTarget).closest('.choices')));
+  console.log($(e.currentTarget).closest('.choices'));
   // const colorArray = JSON.parse($(e.target).closest('.palette-details').attr('data-colors'));
 
   // colorArray.forEach((color, i) => {

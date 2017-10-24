@@ -35,18 +35,20 @@
         </div>
       </section>
       <input type='button' class='gen-btn' value='Generate Colors!'>
-      <section class='save-area'>
-        <select id='projects' placeHolder='Select Project'></select>
-        <div class='user-save'>
-          <input id='project-name' type='text' name='project-name' placeholder='project name(optional)'>
-        </div>
-        <div class='user-save'>
-          <input id='palette-name' type='text' name='palette-name' placeholder='palette name'>
-        </div>
-        <div class='save-btn'></div>
+      <section class='saved-area'>
+        <section class='save-area'>
+          <select id='projects' placeHolder='Select Project'></select>
+          <div class='user-save'>
+            <input id='project-name' type='text' name='project-name' placeholder='project name'>
+          </div>
+          <div class='user-save'>
+            <input id='palette-name' type='text' name='palette-name' placeholder='palette name'>
+          </div>
+          <div class='save-btn'></div>
+        </section>
+        <hr />
+        <section id='saved-projects'></section>
       </section>
-      <hr />
-      <section id='saved-projects'></section>
     </section>
     <script src ='./JS/scripts.js' type='text/javascript'></script>
   </body>

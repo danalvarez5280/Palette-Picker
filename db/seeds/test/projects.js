@@ -1,45 +1,49 @@
-const projectsData = [{
-  id: 1,
-  name: 'Project 1'
-},
-{
-  id: 2,
-  name: 'Project 2'
-}];
 
-const paletteData = [
+const paletteData1 = [
   { id: 1,
     name: 'Palette 1',
     hex1: '#3F856C',
     hex2: '#065A83',
     hex3: '#94AD42',
     hex4: '#BBB345',
-    hex5: '#6303D0',
-    project_id: '1' },
+    hex5: '#6303D0'},
   { id: 2,
     name: 'Palette 2',
     hex1: '#4A914E',
     hex2: '#E1930C',
     hex3: '#C54E51',
     hex4: '#2DAC4A',
-    hex5: '#898117',
-    project_id: '1' },
+    hex5: '#898117'}
+];
+
+const paletteData2 = [
   { id: 3,
-    name: 'This other Palette',
+    name: 'Palette 3',
     hex1: '#68608F',
     hex2: '#49C262',
     hex3: '#AB50E5',
     hex4: '#BBB345',
-    hex5: '#6303D0',
-    project_id: '2'},
+    hex5: '#6303D0'},
   { id: 4,
-    name: 'The best palette ever',
+    name: 'Palette 4',
     hex1: '#3F856C',
     hex2: '#065A83',
     hex3: '#94AD42',
     hex4: '#BBB345',
-    hex5: '#6303D0',
-    project_id: '2'}
+    hex5: '#6303D0'}
+];
+
+const projectsData = [
+  {
+    id: 1,
+    name: 'Project 1',
+    palettes: paletteData1
+  },
+  {
+    id: 2,
+    name: 'Project 2',
+    palettes: paletteData2
+  }
 ];
 
 
@@ -52,7 +56,7 @@ const createProject = (knex, project) => {
   .then(projectId => {
     let palettePromises = [];
 
-    pale.forEach(palette => {
+    project.palettes.forEach(palette => {
       palettePromises.push(
         createPalette(knex, {
           id: palette.id,
@@ -62,7 +66,7 @@ const createProject = (knex, project) => {
           hex3: palette.hex3,
           hex4: palette.hex4,
           hex5: palette.hex5,
-          project_id: palette.project_id
+          project_id: projectId[0]
         })
       )
     });
