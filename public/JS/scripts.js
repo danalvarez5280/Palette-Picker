@@ -106,20 +106,6 @@ const genRandomColors = () => {
   return color;
 };
 
-//function that randomly changes the color of the header
-const headerColor = () => {
-  const header = $('header');
-  let newColor = genRandomColors();
-  header.css('background-color', newColor);
-};
-
-//function that randomly changes the h1 color
-const h1Color = () => {
-  const title = $('h1');
-  let newColor = genRandomColors();
-  title.css('color', newColor);
-};
-
 //locks an individual color
 const lockColor = (e) => {
   $(e.target).toggleClass('lock');
