@@ -126,7 +126,7 @@ describe('API Routes', () => {
   });
 
   describe('POST /api/v1/projects', () => {
-    it('should save a project to the database', (done) => {
+    it.skip('should save a project to the database', (done) => {
       chai.request(server)
       .post('/api/v1/projects')
       .send({
@@ -159,7 +159,7 @@ describe('API Routes', () => {
       });
     });
 
-    it('should save a palette to the database', (done) => {
+    it.skip('should save a palette to the database', (done) => {
       chai.request(server)
       .post('/api/v1/palettes')
       .send({
@@ -220,5 +220,5 @@ describe('API Routes', () => {
      })
    })
  });
- 
+
 });

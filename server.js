@@ -87,7 +87,6 @@ app.get('/api/v1/palettes/:id', (request, response) => {
 //saves a project to the database
 app.post('/api/v1/projects', (request, response) => {
   const name = request.body;
-  // console.log('WTHAT THE WHT:', name);
 
   if (!name) {
     return response.status(422).send({ error: `Expected format: { name: <String> }. You're missing the name property.` });
