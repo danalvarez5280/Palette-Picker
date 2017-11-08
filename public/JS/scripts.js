@@ -12,7 +12,7 @@ const appendPalette = (palette) => {
     `<div class='saved-color' style='background-color:${color}'></div>`);
 
   const savedPalette =
-  `<div id='${palette.id}' class='user-palette'>
+  `<div id='${palette.id}' class='user-palette' data-colors=${JSON.stringify(hexCodes)}>
     <h3>${palette.name}</h3>
     <div class='choices'>
     ${savedColors}
@@ -185,7 +185,15 @@ const saveProject = () => {
 }
 
 const showSavedPalette = (e) => {
-  console.log($(e.target).closest('.saved-color'));
+  const userPalette = e.target.closest('.user-palette').dataset.colors
+  displaySaved(userPalette)
+};
+
+const displaySaved = (array) => {
+  const newArray = JSON.parse(array);
+  newArray.map((color, i) => {
+    $(`.color${i+1}`).css('background-color', color);
+  })
 };
 
 //event listeners
